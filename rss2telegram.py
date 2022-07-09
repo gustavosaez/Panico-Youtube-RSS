@@ -57,7 +57,7 @@ def check_topics(url):
     feed = feedparser.parse(url)
     for topic in reversed(feed['items'][:10]):
         source = feed['feed']['title']
-        title = f'🗞 <b>{topic.title}</b>\n\n🔗 <a href="' + str(source) + '"></a>'
+        title = f'🗞 <b>{topic.title}</b>\n\n🔗 {link}'
         link = topic.links[0].href
         photo = get_img(topic.links[0].href)
         if not check_history(link):
