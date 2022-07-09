@@ -37,7 +37,7 @@ def send_message(source, title, link, photo):
     #btn = types.InlineKeyboardButton(f'{random.choice(EMOJIS.split(","))} {source}', url=link)
     #btn_link.row(btn)
     print(f'Enviando {title}')
-    message = f'<b>{title}</b>\n\n🔗 {source}'
+    message = f'<b>{title}</b>\n\n + 🔗 {source}'
     try:
         response = requests.get(photo)
         open('img.png', 'wb').write(response.content)
@@ -46,7 +46,7 @@ def send_message(source, title, link, photo):
             bot.send_photo(dest, photo, caption=title, parse_mode='HTML', reply_markup=btn_link) #reply_markup=btn_link
     except:
         for dest in DESTINATION.split(','):
-            bot.send_message(dest, title, parse_mode='HTML',reply_markup=btn_link, disable_web_page_preview=True) #reply_markup=btn_link
+            bot.send_message(dest, title, parse_mode='HTML', disable_web_page_preview=True) #reply_markup=btn_link
 
 def get_img(url):
     response = requests.get(url, headers = {'User-agent': 'Mozilla/5.1'})
