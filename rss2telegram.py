@@ -11,7 +11,7 @@ import sqlite3
 URL = os.environ.get('URL')
 DESTINATION = os.environ.get('DESTINATION')
 BOT_TOKEN = os.environ.get('BOT_TOKEN')
-EMOJIS = os.environ.get('EMOJIS', '🗞,📰,🗒,🗓,📋,🔗,📝,🗃')
+#EMOJIS = os.environ.get('EMOJIS', '🗞,📰,🗒,🗓,📋,🔗,📝,🗃')
 
 bot = telebot.TeleBot(BOT_TOKEN)
 
@@ -37,7 +37,7 @@ def send_message(source, title, link, photo):
     #btn = types.InlineKeyboardButton(f'{random.choice(EMOJIS.split(","))} {source}', url=link)
     #btn_link.row(btn)
     print(f'Enviando {title}')
-    message = f'<b>{title}</b>\n\n🔗 <a href="' + str(link) + '">{source}</a>'
+    message = f'<b>{title}</b>\n\n🔗 {source}'
     try:
         response = requests.get(photo)
         open('img.png', 'wb').write(response.content)
