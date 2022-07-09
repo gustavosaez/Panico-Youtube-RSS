@@ -43,10 +43,10 @@ def send_message(source, title, link, photo):
         open('img.png', 'wb').write(response.content)
         photo = open('img.png', 'rb')
         for dest in DESTINATION.split(','):
-            bot.send_photo(dest, photo, caption=title, parse_mode='HTML') #reply_markup=btn_link
+            bot.send_photo(dest, photo, caption=title, parse_mode='HTML', reply_markup=btn_link) #reply_markup=btn_link
     except:
         for dest in DESTINATION.split(','):
-            bot.send_message(dest, title, parse_mode='HTML', disable_web_page_preview=True) #reply_markup=btn_link
+            bot.send_message(dest, title, parse_mode='HTML',reply_markup=btn_link, disable_web_page_preview=True) #reply_markup=btn_link
 
 def get_img(url):
     response = requests.get(url, headers = {'User-agent': 'Mozilla/5.1'})
@@ -58,7 +58,7 @@ def check_topics(url):
     feed = feedparser.parse(url)
     for topic in reversed(feed['items'][:10]):
         source = feed['feed']['title']
-        title = f'<b>{topic.title}</b>'
+        title = f'🗞 <b>{topic.title}</b>'
         link = topic.links[0].href
         photo = get_img(topic.links[0].href)
         if not check_history(link):
