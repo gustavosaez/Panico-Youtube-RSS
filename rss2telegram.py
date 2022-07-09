@@ -11,7 +11,6 @@ import sqlite3
 URL = os.environ.get('URL')
 DESTINATION = os.environ.get('DESTINATION')
 BOT_TOKEN = os.environ.get('BOT_TOKEN')
-#EMOJIS = os.environ.get('EMOJIS', '🗞,📰,🗒,🗓,📋,🔗,📝,🗃')
 
 bot = telebot.TeleBot(BOT_TOKEN)
 
@@ -37,7 +36,7 @@ def send_message(source, title, link, photo):
     #btn = types.InlineKeyboardButton(f'{random.choice(EMOJIS.split(","))} {source}', url=link)
     #btn_link.row(btn)
     print(f'Enviando {title}')
-    message = f'<b>{title}</b>\n\n + 🔗 {source}'
+    message = f'<b>{title}</b>'
     try:
         response = requests.get(photo)
         open('img.png', 'wb').write(response.content)
@@ -58,7 +57,7 @@ def check_topics(url):
     feed = feedparser.parse(url)
     for topic in reversed(feed['items'][:10]):
         source = feed['feed']['title']
-        title = f'🗞 <b>{topic.title}</b>'
+        title = f'🗞 <b>{topic.title}</b>\n\n + 🔗 {source}'
         link = topic.links[0].href
         photo = get_img(topic.links[0].href)
         if not check_history(link):
