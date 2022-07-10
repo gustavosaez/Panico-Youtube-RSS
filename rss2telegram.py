@@ -36,7 +36,6 @@ def send_message(source, title, link, photo):
     #btn = types.InlineKeyboardButton(f'{random.choice(EMOJIS.split(","))} {source}', url=link)
     #btn_link.row(btn)
     print(f'Enviando {title}')
-    #message = f'<b>{title}</b>'
     try:
         response = requests.get(photo)
         open('img.png', 'wb').write(response.content)
