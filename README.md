@@ -17,3 +17,6 @@ Defina as variáveis abaixo na aba `Secrets` do repositório:
 ## Uso
 
 A ação irá buscar as atualizações a cada 15 minutos conforme definido no arquivo [cron.yml](.github/workflows/cron.yml).
+
+# Donate
+## https://paypal.me/gustavosaez
