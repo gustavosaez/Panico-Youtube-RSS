@@ -45,7 +45,7 @@ def send_message(source, title, link, photo):
             bot.send_photo(dest, photo, caption=title, parse_mode='HTML') #reply_markup=btn_link
     except:
         for dest in DESTINATION.split(','):
-            bot.send_message(dest, title, parse_mode='HTML', reply_markup=btn_link, disable_web_page_preview=True) #reply_markup=btn_link
+            bot.send_message(dest, title, parse_mode='HTML', disable_web_page_preview=True) #reply_markup=btn_link
 
 def get_img(url):
     response = requests.get(url, headers = {'User-agent': 'Mozilla/5.1'})
