@@ -39,6 +39,7 @@ def send_message(source, title, link, photo):
         photo = open('img.png', 'rb')
         for dest in DESTINATION.split(','):
             #bot.send_photo(dest, photo, caption=title, parse_mode='HTML')
+            print(title)
     except:
         for dest in DESTINATION.split(','):
             bot.send_message(dest, title, parse_mode='HTML', disable_web_page_preview=True)
