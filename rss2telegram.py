@@ -46,8 +46,12 @@ def send_message(source, title, link, photo):
 
 def get_img(url):
     response = requests.get(url, headers = {'User-agent': 'Mozilla/5.1'})
-    html = BeautifulSoup(response.content, 'html.parser')
-    return html.find('meta', {'property': 'og:image'})['content']
+    try:
+        html = BeautifulSoup(response.content, 'html.parser')
+        photo = html.find('meta', {'property': 'og:image'})['content']
+    except TypeError:
+        photo = False
+    return photo
 
 def check_topics(url):
     now = gmtime()
