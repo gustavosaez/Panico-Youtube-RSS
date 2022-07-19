@@ -43,3 +43,6 @@ Faça um *Fork*, defina as variáveis e habilite a ação em "*Enable workflow*"
 ![Enable Workflow](https://user-images.githubusercontent.com/7331540/178158090-bf774cae-071b-4ac2-ab03-9c5c1132b79e.png)
 
 A ação irá buscar as atualizações a cada hora conforme definido no arquivo [cron.yml](.github/workflows/cron.yml).
+
+# Donate
+## https://paypal.me/gustavosaez

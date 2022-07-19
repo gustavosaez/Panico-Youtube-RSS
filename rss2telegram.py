@@ -131,4 +131,3 @@ def check_topics(url):
 if __name__ == "__main__":
     for url in URL.split(','):
         check_topics(url)
-
