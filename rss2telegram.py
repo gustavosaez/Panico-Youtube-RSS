@@ -14,6 +14,8 @@ URL = os.environ.get('URL')
 DESTINATION = os.environ.get('DESTINATION')
 BOT_TOKEN = os.environ.get('BOT_TOKEN')
 EMOJIS = os.environ.get('EMOJIS', '🗞,📰,🗒,🗓,📋,🔗,📝,🗃')
+PARAMETERS = os.environ.get('PARAMETERS', False)
+DRYRUN = os.environ.get('DRYRUN')
 
 bot = telebot.TeleBot(BOT_TOKEN)
 
@@ -35,6 +37,8 @@ def check_history(link):
     return data
 
 def send_message(topic, button):
+    if DRYRUN == 'failure':
+        return
     MESSAGE_TEMPLATE = os.environ.get(f'MESSAGE_TEMPLATE', False)
     if MESSAGE_TEMPLATE:
         MESSAGE_TEMPLATE = set_env_vars(MESSAGE_TEMPLATE, topic)
@@ -72,12 +76,21 @@ def get_img(url):
         photo = False
     return photo
 
+def define_link(link, PARAMETERS):
+    if PARAMETERS:
+        if '?' in link:
+            return f'{link}&{PARAMETERS}'
+        return f'{link}?{PARAMETERS}'
+    return f'{link}'
+
+
+
 def set_env_vars(text, topic):
     cases = {
         'SITE_NAME': topic['site_name'],
         'TITLE': topic['title'],
         'SUMMARY': re.sub('<[^<]+?>', '', topic['summary']),
-        'LINK': topic['link'],
+        'LINK': define_link(topic['link'], PARAMETERS),
         'EMOJI': random.choice(EMOJIS.split(","))
     }
     for word in re.split('{|}', text):
