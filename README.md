@@ -1,8 +1,10 @@
 <img align="right" alt="RSS Logo" width="30%" height="auto" src="https://rss.com/blog/wp-content/uploads/2019/10/social_style_3_rss-512-1.png">
 
-# RSS2inTG
+# Rss2Telegram
 
 Envio automático de feed RSS para pessoa, canal ou grupo no Telegram.
+
+[Mais explicações e exemplos de uso aqui](https://blog.gabrf.com/posts/Rss2Telegram/).
 
 ## Configuração:
 
@@ -13,6 +15,8 @@ Defina as variáveis na aba `Secrets` do repositório:
 `DESTINATION`: Destinos das mensagens separados por vírgulas (`@destino` ou ID);
 
 `URL`: Endereços de feeds RSS separados por vírgulas;
+
+`PARAMETERS`: (opcional) Parâmetros que serão adicionados ao fim do link;
 
 `MESSAGE_TEMPLATE`: (opcional) Texto da mensagem. Valor padrão: `<b>{TITLE}</b>` ([ver opções](#opções-de-variáveis));
 
