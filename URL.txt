@@ -1,1 +1,1 @@
-youtube.com/feeds/videos.xml?playlist_id=PLW3mXBgY1SKVDkJrb8qNiaLuZovwcnRTP
+https://youtube.com/feeds/videos.xml?playlist_id=PLW3mXBgY1SKVDkJrb8qNiaLuZovwcnRTP
