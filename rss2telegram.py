@@ -63,9 +63,14 @@ def send_message(topic, button):
         for dest in DESTINATION.split(','):
             photo = open('img', 'rb')
             try:
-                bot.send_photo(dest, photo, caption=MESSAGE_TEMPLATE, parse_mode='HTML', reply_markup=btn_link)
+
+                msg = bot.send_photo(dest, photo, caption=MESSAGE_TEMPLATE, parse_mode='HTML', reply_markup=btn_link)
+                bot.pin_chat_message(dest, msg.message_id, disable_notification=True)
+
             except telebot.apihelper.ApiTelegramException:
+
                 topic['photo'] = False
+
                 send_message(topic, button)
     else:
         for dest in DESTINATION.split(','):
